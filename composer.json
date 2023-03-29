@@ -1,5 +1,5 @@
 {
-  "name": "OrkunAkarOctopusLabs/application-insights",
+  "name": "orkunakaroctopuslabs/application-insights",
   "description": "This project extends the Application Insights API surface to support PHP.",
   "type": "library",
   "keywords": [
