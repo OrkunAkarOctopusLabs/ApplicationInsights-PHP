@@ -28,5 +28,6 @@
     "psr-4": {
       "ApplicationInsights\\Tests\\": "Tests/"
     }
-  }
+  },
+  "minimum-stability": "dev"
 }
