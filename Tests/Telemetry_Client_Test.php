@@ -196,8 +196,8 @@ class Telemetry_Client_Test extends TestCase
      */
     public function testCompleteRequest()
     {
-        $this->_telemetryClient->trackRequest('myRequest', 'http://foo.bar', time(), 3754, 200, true, ['InlineProperty' => 'test_value'], ['duration_inner' => 42.0]);
-        $this->_telemetryClient->trackRequest('myRequest2', 'http://foo.bar', time(), 3754, 200, false, ['InlineProperty' => 'test_value'], ['duration_inner' => 42.0]);
+        $this->_telemetryClient->trackRequest(1, 'myRequest', 'http://foo.bar', time(), 3754, 200, true, ['InlineProperty' => 'test_value'], ['duration_inner' => 42.0]);
+        $this->_telemetryClient->trackRequest(2, 'myRequest2', 'http://foo.bar', time(), 3754, 200, false, ['InlineProperty' => 'test_value'], ['duration_inner' => 42.0]);
 
         $queue = json_decode($this->_telemetryClient->getChannel()->getSerializedQueue(), true);
         $queue = $this->adjustDataInQueue($queue);

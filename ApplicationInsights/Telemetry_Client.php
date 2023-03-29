@@ -158,9 +158,9 @@ class Telemetry_Client
      * @param array $properties An array of name to value pairs. Use the name as the index and any string as the value.
      * @param array $measurements An array of name to double pairs. Use the name as the index and any double as the value.
      */
-    public function trackRequest($name, $url, $startTime, $durationInMilliseconds = 0, $httpResponseCode = 200, $isSuccessful = true, $properties = NULL, $measurements = NULL )
+    public function trackRequest($id, $name, $url, $startTime, $durationInMilliseconds = 0, $httpResponseCode = 200, $isSuccessful = true, $properties = NULL, $measurements = NULL )
     {
-        $this->endRequest($this->beginRequest($name, $url, $startTime), $durationInMilliseconds, $httpResponseCode, $isSuccessful, $properties, $measurements );
+        $this->endRequest($this->beginRequest($id, $name, $url, $startTime), $durationInMilliseconds, $httpResponseCode, $isSuccessful, $properties, $measurements );
     }
 
     /**
@@ -171,11 +171,10 @@ class Telemetry_Client
      * @param int $startTime The timestamp at which the request started.
      * @return \ApplicationInsights\Channel\Contracts\Request_Data an initialized Request_Data, which can be sent by using @see endRequest
      */
-    public function beginRequest($name, $url, $startTime )
+    public function beginRequest($id, $name, $url, $startTime )
     {
         $data = new Channel\Contracts\Request_Data();
-        $guid = \ApplicationInsights\Channel\Contracts\Utils::returnGuid();
-        $data->setId($guid);
+        $data->setId($id);
         $data->setName($name);
         $data->setUrl($url);
         $data->setTime($startTime);
